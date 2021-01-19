@@ -27,7 +27,7 @@ export function connectTypeahead({
   function click(val) {
     return function() {
       if (image) {
-        image.src = '';
+        image.style.filter = 'blur(8px)';
         document.body.append(loader);
         fetch(`https://api.scryfall.com/cards/named?exact=${val}`, {
           mode: 'cors', // no-cors, *cors, same-origin,
@@ -39,6 +39,7 @@ export function connectTypeahead({
   }
 
   image.onload = () => {
+    image.style.filter = ''
     loader.remove();
   }
 
