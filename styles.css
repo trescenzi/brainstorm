@@ -1,0 +1,122 @@
+:root {
+  --grey: #EEF0F2;
+  --blue: #6F8AB7;
+  --black: #353B3C;
+  --yellow: #EAD637;
+}
+
+html {
+  color: var(--black);
+  background-color: var(--grey);
+  height: 100%;
+  margin: 16px;
+}
+
+.typeahead {
+  display: grid;
+  padding: 16px;
+  border-bottom: 2px solid var(--blue); 
+}
+
+.typeahead, .typeahead input {
+  color: var(--black);
+  font-size: 2rem;
+}
+
+.typeahead span, .typeahead input {
+  grid-column: 1/1;
+  grid-row: 1/1;
+}
+
+.typeahead input:not(:placeholder-shown) + span,
+.typeahead input:focus-within + span {
+  display: none;
+}
+
+.typeahead input {
+  appearance: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.typeahead-list {
+  display: none;
+  margin-top: 16px;
+  width: 100%;
+  position: absolute;
+  font-size: 1.5rem;
+  background-color: var(--grey);
+}
+
+.typeahead-list div {
+  border-bottom: 3px solid transparent;
+}
+.typeahead-list div:hover {
+  cursor: pointer;
+  border-bottom: 3px solid var(--yellow);
+}
+
+.typeahead:focus-within + .typeahead-list,
+.typeahead-list:hover {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+@media(min-width: 750px) {
+  .typeahead:focus-within + .typeahead-list,
+  .typeahead-list:hover {
+    display: grid;
+    justify-content: start;
+    align-content: start;
+  }
+}
+
+.image {
+  margin-top: 48px;
+  text-align: center;
+}
+.image img {
+  max-width: calc(100% - 32px);
+}
+
+.hide {
+  display: none;
+}
+
+/*
+ * source: https://loading.io/css/
+*/
+.lds-hourglass {
+  display: inline-block;
+  position: absolute;
+  width: 32px;
+  height: 32px;
+}
+.lds-hourglass:after {
+  content: " ";
+  display: block;
+  border-radius: 50%;
+  width: 0;
+  height: 0;
+  margin: 8px;
+  box-sizing: border-box;
+  border: 16px solid var(--blue);
+  border-color: var(--blue) transparent var(--blue) transparent;
+  animation: lds-hourglass 1.2s infinite;
+}
+@keyframes lds-hourglass {
+  0% {
+    transform: rotate(0);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  50% {
+    transform: rotate(900deg);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  100% {
+    transform: rotate(1800deg);
+  }
+}
+
