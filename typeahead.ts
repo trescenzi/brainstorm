@@ -21,11 +21,11 @@ export function connectTypeahead({
 
   const loader = document.createElement('div');
   loader.classList.add('lds-hourglass');
-  loader.style.left = `${typeahead.getBoundingClientRect().right - 70}px`;
-  loader.style.top = `${typeahead.getBoundingClientRect().top}px`;
 
   function click(val) {
     return function() {
+      loader.style.left = `${typeahead.getBoundingClientRect().right - 70}px`;
+      loader.style.top = `${typeahead.getBoundingClientRect().top}px`;
       if (image) {
         image.style.filter = 'blur(8px)';
         document.body.append(loader);
