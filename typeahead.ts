@@ -1,5 +1,6 @@
 import {preProcessStrings, search} from './search';
 
+console.log('test');
 export function connectTypeahead({
   input: typeahead,
   list,
