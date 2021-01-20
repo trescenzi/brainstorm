@@ -19,7 +19,6 @@ html {
 
 .typeahead {
   display: grid;
-  padding: 16px;
   border-bottom: 2px solid var(--blue); 
 }
 
@@ -43,6 +42,7 @@ html {
   border: none;
   outline: none;
   background-color: transparent;
+  width: 100%;
 }
 
 .typeahead-list {

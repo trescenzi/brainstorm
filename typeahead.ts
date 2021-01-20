@@ -33,7 +33,10 @@ export function connectTypeahead({
           mode: 'cors', // no-cors, *cors, same-origin,
         })
         .then(x => x.json())
-        .then(({image_uris}) => image.src = image_uris.normal);
+        .then(({image_uris, ...rest}) => {
+          console.log(rest);
+          image.src = image_uris.normal;
+        });
       }
     }
   }
