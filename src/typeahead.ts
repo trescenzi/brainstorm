@@ -31,6 +31,7 @@ export function connectTypeahead({
         image.style.filter = 'blur(8px)';
         document.body.append(loader);
         exactName(val).then(card => {
+          image.alt = `name:${card.name} type:${card.type_line} text:${card.oracle_text}`;
           image.src = getImageLink(card, CardImageSizes.NORMAL);
         });
       }
