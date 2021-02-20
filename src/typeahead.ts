@@ -1,4 +1,5 @@
-import {preProcessStrings, search} from './search';
+import {preProcessStrings, search} from './search.ts';
+import {exactName, getImageLink, CardImageSizes} from './scryfall.ts';
 
 export function connectTypeahead({
   input: typeahead,
@@ -29,13 +30,8 @@ export function connectTypeahead({
       if (image) {
         image.style.filter = 'blur(8px)';
         document.body.append(loader);
-        fetch(`https://api.scryfall.com/cards/named?exact=${val}`, {
-          mode: 'cors', // no-cors, *cors, same-origin,
-        })
-        .then(x => x.json())
-        .then(({image_uris, ...rest}) => {
-          console.log(rest);
-          image.src = image_uris.normal;
+        exactName(val).then(card => {
+          image.src = getImageLink(card, CardImageSizes.NORMAL);
         });
       }
     }
