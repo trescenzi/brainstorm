@@ -1,4 +1,4 @@
-import {connectTypeahead} from './typeahead.ts';
+import {connectTypeahead} from './src/typeahead.ts';
 
 connectTypeahead({
   input: typeahead,
