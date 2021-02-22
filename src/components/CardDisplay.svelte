@@ -19,7 +19,7 @@
     src={image.src}
   />
   {#if card?.scryfall_uri}
-    <a href={card.scryfall_uri}>View on Scryfall</a>
+    <a target="_blank" rel="noopener" href={card.scryfall_uri}>View on Scryfall</a>
   {/if}
 </div>
 
