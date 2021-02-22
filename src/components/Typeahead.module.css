@@ -1,0 +1,67 @@
+.typeaheadContainer {
+  position: relative;
+  flex: 1;
+}
+
+.typeahead {
+  display: grid;
+  border-bottom: 2px solid var(--blue);
+}
+
+.typeahead,
+.typeahead input {
+  color: var(--black);
+  font-size: 2rem;
+}
+
+.typeahead span,
+.typeahead input {
+  grid-column: 1/1;
+  grid-row: 1/1;
+}
+
+.typeahead input:not(:placeholder-shown) + span,
+.typeahead input:focus-within + span {
+  display: none;
+}
+
+.typeahead input {
+  appearance: none;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  width: 100%;
+}
+
+.typeaheadList {
+  display: none;
+  margin-top: 16px;
+  width: 100%;
+  position: absolute;
+  font-size: 1.5rem;
+  background-color: var(--grey);
+}
+
+.typeaheadList div {
+  border-bottom: 3px solid transparent;
+}
+.typeaheadList div:hover {
+  cursor: pointer;
+  border-bottom: 3px solid var(--yellow);
+}
+
+.typeahead:focus-within + .typeaheadList,
+.typeaheadList:hover {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+@media (min-width: 750px) {
+  .typeahead:focus-within + .typeaheadList,
+  .typeaheadList:hover {
+    display: grid;
+    justify-content: start;
+    align-content: start;
+  }
+}
