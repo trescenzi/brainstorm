@@ -5,27 +5,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Blazin Fast MTG Typeahead</title>
-  <meta name="description" content="A useful MTG Typeahead">
+  <title>Blazing Fast MTG Card Search-Brainstorm</title>
+  <meta name="description" content="A speedy MTG search tool that's optimized for finding individual cards based on their names">
   <meta name="author" content="trescenzi">
 
   <link rel="stylesheet" href="/src/styles/reset.css">
   <link rel="stylesheet" href="/src/styles/styles.css">
-  <link rel="preload" src="/src/typeahead.js" as="script">
 </head>
 
 <body>
-  <div class="typeahead-container">
-    <label class="typeahead">
-      <input id="typeahead" placeholder=" " />
-      <span>Enter a Card Name</span>
-    </label>
-    <div id="list" class="typeahead-list">
-    </div>
-  </div>
-  <div class="image">
-    <img id="image" alt="enter a card name to load the cards image"/>
-  </div>
+  <div id="typeaheadMount"></div>
   <script type="module" src="main.js"></script>
 </body>
 </html>

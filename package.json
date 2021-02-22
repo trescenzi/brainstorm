@@ -6,16 +6,21 @@
   "scripts": {
     "start": "node processCardNames.js && snowpack dev",
     "build": "node processCardNames.js && snowpack build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write src"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@snowpack/plugin-svelte": "^3.5.2",
     "lodash": "^4.17.20",
     "node-fetch": "^2.6.1",
+    "prettier": "^2.2.1",
+    "prettier-plugin-svelte": "^2.1.6",
     "snowpack": "^3.0.11"
   },
   "dependencies": {
-    "fastest-levenshtein": "^1.0.12"
+    "fastest-levenshtein": "^1.0.12",
+    "svelte": "^3.32.3"
   }
 }

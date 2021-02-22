@@ -1,4 +1,4 @@
-import {distance} from 'fastest-levenshtein';
+import { distance } from "fastest-levenshtein";
 
 interface SearchObject {
   val: any;
@@ -23,17 +23,17 @@ function compareMatchs(oldMatch: Match, newMatch: Match): number {
     return 1;
   } else if (oldMatch.includes && newMatch.includes) {
     return oldMatch.distance - newMatch.distance;
-  } else if(newMatch.includes) {
+  } else if (newMatch.includes) {
     return 1;
   } else {
-    return oldMatch.distance - newMatch.distance; 
+    return oldMatch.distance - newMatch.distance;
   }
 }
 
 window.times = {};
-window.averageTimes = function(name) {
-  return times[name].reduce((acc, t) => acc + t, 0)/times[name].length;
-}
+window.averageTimes = function (name) {
+  return times[name].reduce((acc, t) => acc + t, 0) / times[name].length;
+};
 
 function time(fn, name) {
   const startTime = performance.now();
@@ -49,55 +49,76 @@ function time(fn, name) {
   return r;
 }
 
-export function search(str: string, searchSpace: Array<SearchObject>): Array<Match> {
+export function search(
+  str: string,
+  searchSpace: Array<SearchObject>
+): Array<Match> {
   str = preprocess(str);
   let numIncludes = 0;
-  let weighted = time(() => searchSpace.reduce((matches: Array<Match>, n: SearchObject) => {
-    const startsWith = n.processed.startsWith(str);
-    const includes = startsWith || n.processed.includes(str);
-    if (includes) numIncludes++;
-    if (!includes && numIncludes > 10) return matches;
-    matches.push({
-      val: n.val,
-      tokens: n.tokens,
-      processed: n.processed,
-      distance: distance(str, n.processed),
-      startsWith,
-      includes,
-    });
-    return matches;
-  }, []), 'measure-default');
+  let weighted = time(
+    () =>
+      searchSpace.reduce((matches: Array<Match>, n: SearchObject) => {
+        const startsWith = n.processed.startsWith(str);
+        const includes = startsWith || n.processed.includes(str);
+        if (includes) numIncludes++;
+        if (!includes && numIncludes > 10) return matches;
+        matches.push({
+          val: n.val,
+          tokens: n.tokens,
+          processed: n.processed,
+          distance: distance(str, n.processed),
+          startsWith,
+          includes,
+        });
+        return matches;
+      }, []),
+    "measure-default"
+  );
   if (numIncludes > 0) {
-    weighted = weighted.filter(w => w.includes);
+    weighted = weighted.filter((w) => w.includes);
   }
-  const sorted = time(() => weighted.sort(compareMatchs), 'sort');
+  const sorted = time(() => weighted.sort(compareMatchs), "sort");
   return sorted.slice(0, 10);
 }
 
-export function searchSpread(str: string, searchSpace: Array<SearchObject>): Array<Match> {
+export function searchSpread(
+  str: string,
+  searchSpace: Array<SearchObject>
+): Array<Match> {
   str = preprocess(str);
-  const weighted = time(() => searchSpace.map((n: SearchObject) => ({
-      ...n,
-      distance: distance(str, n.processed),
-      includes: n.processed.includes(str),
-  })), 'measure-spread');
-  const sorted = time(() => weighted.sort(compareMatchs), 'sort');
+  const weighted = time(
+    () =>
+      searchSpace.map((n: SearchObject) => ({
+        ...n,
+        distance: distance(str, n.processed),
+        includes: n.processed.includes(str),
+      })),
+    "measure-spread"
+  );
+  const sorted = time(() => weighted.sort(compareMatchs), "sort");
   return sorted.slice(0, 10);
 }
 
-export function searchIndex(str: string, searchSpace: Array<SearchObject>): Array<Match> {
+export function searchIndex(
+  str: string,
+  searchSpace: Array<SearchObject>
+): Array<Match> {
   str = preprocess(str);
-  const weighted = time(() => searchSpace.map((n: SearchObject, i: number) => ({
-      index: i,
-      distance: distance(str, n.processed),
-      includes: n.processed.includes(str),
-  })), 'measure-mem');
-  const sorted = time(() => weighted.sort(compareMatchs), 'sort');
-  return sorted.slice(0, 10).map(n => searchSpace[n.index]);
+  const weighted = time(
+    () =>
+      searchSpace.map((n: SearchObject, i: number) => ({
+        index: i,
+        distance: distance(str, n.processed),
+        includes: n.processed.includes(str),
+      })),
+    "measure-mem"
+  );
+  const sorted = time(() => weighted.sort(compareMatchs), "sort");
+  return sorted.slice(0, 10).map((n) => searchSpace[n.index]);
 }
 
 export function preprocess(str: string): string {
-  return str.toLowerCase().replace(/[^a-z0-9 ]/g, '');
+  return str.toLowerCase().replace(/[^a-z0-9 ]/g, "");
 }
 
 export function preProcessStrings(strings: Array<string>): Array<SearchObject> {
@@ -105,7 +126,7 @@ export function preProcessStrings(strings: Array<string>): Array<SearchObject> {
     const processed = preprocess(string);
     strings.push({
       val: string,
-      tokens: processed.split(' ') || [],
+      tokens: processed.split(" ") || [],
       processed,
     });
     return strings;
