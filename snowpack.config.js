@@ -1,10 +1,12 @@
 module.exports = {
-  mount: {/* ... */},
   plugins: ['@snowpack/plugin-svelte'],
+  mount: {
+    public: '/public',
+    src: '/src',
+    pkg: '/pkg',
+  },
   optimize: {
-    bundle: true,
     minify: true,
-    target: 'es2018',
   },
   devOptions: {
     hmr: false,

@@ -45,7 +45,7 @@ function time(fn, name) {
   } else {
     window.times[name] = [totalTime];
   }
-  console.log(totalTime, name);
+  //console.log(totalTime, name);
   return r;
 }
 

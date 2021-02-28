@@ -1,16 +1,19 @@
-<svelte:options accessors />
-
 <script>
   import { isScryfallSearch, fullSeach, namesFromCards } from "../scryfall";
-  import { search } from "../search";
+  import {Typeahead} from '../../pkg/wasm_typeahead.js';
 
-  export let processedCardNames = null;
+  export let wasmCardNames = null;
   export let onSelect = () => {};
   let scryedCards = [];
   let cardNames = [];
+  let typeahead;
+
+  $: if (wasmCardNames) {
+    typeahead = Typeahead.new(wasmCardNames);
+  }
 
   function onInput(e) {
-    if (!processedCardNames) return;
+    if (!typeahead) return;
 
     const query = e.target.value;
     if (query.length === 0) return;
@@ -25,8 +28,12 @@
       return;
     }
 
+    const result = typeahead.search(query).split('|');
+    cardNames = result;
+      /*
     const result = search(query, processedCardNames);
     cardNames = result.map(({ val }) => val);
+     */
   }
 </script>
 
