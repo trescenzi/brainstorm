@@ -5,6 +5,8 @@
   "main": "typeahead.js",
   "scripts": {
     "start": "node processCardNames.js && snowpack dev",
+    "wasm-pack": "wasm-pack build --target web && rm pkg/wasm_typeahead_bg.wasm.d.ts",
+    "wasm-local": "npm run wasm-pack && snowpack build && cd build && python -m SimpleHTTPServer 8000",
     "build": "node processCardNames.js && snowpack build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write src"
@@ -12,8 +14,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@snowpack/plugin-svelte": "^3.5.2",
-    "lodash": "^4.17.20",
+    "@snowpack/plugin-svelte": "3.5.2",
+    "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
     "prettier": "^2.2.1",
     "prettier-plugin-svelte": "^2.1.6",

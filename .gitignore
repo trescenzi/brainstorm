@@ -3,3 +3,8 @@ build
 node_modules
 typeahead-fuzzball.js
 allnames.json
+
+/target
+**/*.rs.bk
+bin/
+wasm-pack.log
