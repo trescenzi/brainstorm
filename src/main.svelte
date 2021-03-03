@@ -5,7 +5,7 @@
   import CardDisplay from "./components/CardDisplay.svelte";
   import { exactName, isScryfallCard } from "./scryfall";
 
-  export let processedCardNames = null;
+  export let wasmCardNames = null;
   let card = null;
   let loading = false;
 </script>
@@ -23,7 +23,7 @@
         card = _card;
       }
     }}
-    {processedCardNames}
+    {wasmCardNames}
   />
   <CardDisplay {card} card_loading={loading} />
 </div>

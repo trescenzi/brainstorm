@@ -11,10 +11,12 @@
 
   <link rel="stylesheet" href="/src/styles/reset.css">
   <link rel="stylesheet" href="/src/styles/styles.css">
+  <link rel="preload" href="/pkg/wasm_typeahead.js" as="script" crossorigin="anonymous">
+  <link rel="preload" href="/src/main.svelte.js" as="script" crossorigin="anonymous">
 </head>
 
 <body>
   <div id="typeaheadMount"></div>
-  <script type="module" src="main.js"></script>
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

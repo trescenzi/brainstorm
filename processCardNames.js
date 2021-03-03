@@ -8,7 +8,7 @@ async function main() {
   console.log(`Got ${Object.keys(allPrintings.data)} sets`);
   const allNames = unique(Object.values(allPrintings.data).reduce((all, {cards}) => [...all, ...cards.map(({name}) => name)], []));
   console.log(`Found ${allNames.length} names`);
-  fs.writeFileSync('./allnames.json', JSON.stringify(allNames));
+  fs.writeFileSync('./public/allnames.json', JSON.stringify(allNames));
 }
 
 main();
