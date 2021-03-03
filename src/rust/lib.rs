@@ -29,7 +29,7 @@ struct Typeahead {
 }
 
 fn process_string(s: &str) -> String {
-    s.to_string().to_lowercase().replace(&[',', '\'', '.', '\\', ' '][..], "")
+    s.to_string().to_lowercase().replace(&[',', '\'', '.', '\\', ' ', '-'][..], "")
 }
 
 #[wasm_bindgen]
