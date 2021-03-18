@@ -48,7 +48,7 @@ impl Typeahead {
             if (!some_includes && includes) {
                 some_includes = true;
             }
-            if includes || matches.len() < 10 {
+            if includes || (!some_includes && matches.len() < 10) {
                 let distance = levenshtein(&val.1, &lower_case_search_string);
                 matches.push(Match{starts_with: starts_with, includes: includes, distance: distance, val: val.0.to_string()});
             }

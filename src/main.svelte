@@ -6,6 +6,7 @@
   import { exactName, isScryfallCard } from "./scryfall";
 
   export let wasmCardNames = null;
+  export let processedCardNames = null;
   let card = null;
   let loading = false;
 </script>
@@ -23,7 +24,7 @@
         card = _card;
       }
     }}
-    {wasmCardNames}
+    _cardNames={wasmCardNames || processedCardNames}
   />
   <CardDisplay {card} card_loading={loading} />
 </div>

@@ -1,19 +1,29 @@
 <script>
+  import {onMount} from 'svelte';
   import { isScryfallSearch, fullSeach, namesFromCards } from "../scryfall";
-  import {Typeahead} from '../../pkg/wasm_typeahead.js';
+  import {search} from '../search';
+  import {wasmSupported} from '../support';
 
-  export let wasmCardNames = null;
+  export let _cardNames = null;
   export let onSelect = () => {};
   let scryedCards = [];
   let cardNames = [];
   let typeahead;
+  let Typeahead;
 
-  $: if (wasmCardNames) {
-    typeahead = Typeahead.new(wasmCardNames);
+  if (wasmSupported) {
+    onMount(async () => {
+      Typeahead = (await import('../../pkg/wasm_typeahead.js')).Typeahead;
+    });
+  }
+
+
+  $: if (_cardNames && wasmSupported) {
+    typeahead = Typeahead.new(_cardNames);
   }
 
   function onInput(e) {
-    if (!typeahead) return;
+    if (!_cardNames) return;
 
     const query = e.target.value;
     if (query.length === 0) return;
@@ -28,12 +38,12 @@
       return;
     }
 
-    const result = typeahead.search(query).split('|');
-    cardNames = result;
-      /*
-    const result = search(query, processedCardNames);
-    cardNames = result.map(({ val }) => val);
-     */
+    if (wasmSupported) {
+      cardNames = typeahead.search(query).split('|');
+    } else {
+      const result = search(query, _cardNames);
+      cardNames = result.map(({ val }) => val);
+    }
   }
 </script>
 
