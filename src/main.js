@@ -7,8 +7,6 @@ let main = new Main({
   target: document.getElementById('typeaheadMount'),
 });
 
-
-
 Promise.all([fetch('/allnames.json'), wasmSupported ? init() : Promise.resolve()])
   .then(([n]) => n.json())
   .then(names => {

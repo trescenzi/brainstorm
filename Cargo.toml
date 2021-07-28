@@ -30,3 +30,6 @@ wasm-bindgen-test = "0.3.13"
 [profile.release]
 # prefer performance(~5% improvement over "s")
 opt-level = 3 
+
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
