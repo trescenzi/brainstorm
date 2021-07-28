@@ -18,15 +18,13 @@
     alt={image.alt}
     src={image.src}
   />
-  {#if card?.scryfall_uri}
-    <a target="_blank" rel="noopener" href={card.scryfall_uri}>View on Scryfall</a>
-  {/if}
 </div>
 
 <style>
   .card-container {
     margin-top: 48px;
     text-align: center;
+    grid-area: d;
   }
   img {
     max-width: calc(100% - 32px);
@@ -34,12 +32,5 @@
 
   .loading {
     filter: blur(6px);
-  }
-
-  a {
-    margin-top: 8px;
-    font-size: 24px;
-    display: block;
-    text-align: center;
   }
 </style>
