@@ -9,7 +9,6 @@ import {CardImage} from './components/CardImage';
 import './index.css'
 
 type Init = {
-  wasmCardNames: string;
   Typeahead: Typeahead
 } | {
   processedCardNames: any;
@@ -24,10 +23,9 @@ async function init() : Promise<Init> {
   if (wasmSupported) {
     console.log('Using WASM search');
     const wasm = await import('../pkg/wasm_typeahead.js');
-    const Typeahead = wasm.Typeahead as unknown as Typeahead;
+    const Typeahead = wasm.Typeahead;
     return {
-      wasmCardNames: names.join('|'),
-      Typeahead
+      Typeahead: Typeahead.new(names.join('|'))
     };
   } else {
     console.log('WASM not supported falling back to js search');
@@ -48,8 +46,8 @@ function App() {
         throw new Error('FAILED TO INIT');
       }
 
-      if ('wasmCardNames' in initVal) {
-        typeahead.current = initVal.Typeahead.new(initVal.wasmCardNames);
+      if ('Typeahead' in initVal) {
+        typeahead.current = initVal.Typeahead
         return;
       }
     }

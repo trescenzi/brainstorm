@@ -1,5 +1,5 @@
 // https://www.syncfusion.com/faq/blazor/general/how-can-i-check-if-a-browser-supports-webassembly
-export const wasmSupported : bool = (() => {
+export const wasmSupported : boolean = (() => {
     try {
 if (typeof WebAssembly === "object"
            && typeof WebAssembly.instantiate === "function") {

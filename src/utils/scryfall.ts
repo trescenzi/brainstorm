@@ -176,7 +176,7 @@ function promiseDebounce(func: Function, wait: number): Function {
       reject = null;
     }
     clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    timeout = setTimeout(later, wait) as unknown as number;
     return promise;
   };
 }

@@ -17,11 +17,21 @@ declare module 'accessible-autocomplete/preact' {
 }
 
 declare module 'pkg/wasm_typeahead' {
+  export class TypeahaedConstructor {
+    public static new(search_space: string): Typeahead;
+  }
   export class Typeahead {
-    static new(search_space: string): Typeahead;
     search(search: string): string;
     free(): void;
   }
 
   export default function init() : Promise<void>;
+}
+
+declare module '*.css' {
+  interface IClassNames {
+    [className: string]: string
+  }
+  const classNames: IClassNames;
+  export = classNames;
 }

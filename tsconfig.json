@@ -17,7 +17,8 @@
     "jsx": "preserve",
     "jsxFactory": "h",
     "jsxFragmentFactory": "Fragment",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "preact",
+    "plugins": [{"name": "ts-css-modules-vite-plugin", "root": "./"}]
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
