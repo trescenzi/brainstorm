@@ -20,7 +20,11 @@ export function Typeahead({
     externalOnSelect(n);
   };
 
-  return <div class={classes.typeaheadContainer}>
+  return <div 
+   class={classes.typeaheadContainer}
+   onFocus={() => setIsOpen(true)}
+   onfocusout={() => setIsOpen(false)}
+  >
     <input
       class={classes.typeahead}
       value={inputVal}
@@ -35,9 +39,11 @@ export function Typeahead({
       onKeyDown={(e) => {
         if (e.keyCode === 40) { //down
           const currentIndex = cardNames.findIndex(name => name === selectedCardName);
+          !isOpen && setIsOpen(true);
           setSelectedCardName(cardNames[currentIndex + 1 >= cardNames.length ? 0 : currentIndex + 1])
         } else if (e.keyCode === 38) { //up
           const currentIndex = cardNames.findIndex(name => name === selectedCardName);
+          !isOpen && setIsOpen(true);
           setSelectedCardName(cardNames[currentIndex - 1 < 0 ? cardNames.length - 1 : currentIndex - 1])
         } else if (e.keyCode === 13) { //enter
           onSelect(selectedCardName);
@@ -45,7 +51,6 @@ export function Typeahead({
           setIsOpen(false);
         }
       }}
-      onFocus={() => setIsOpen(true)}
     />
     {isOpen &&
       <ul class={classes.typeaheadList}>

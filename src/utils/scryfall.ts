@@ -225,7 +225,7 @@ async function _fullSeach(query: string): Promise<ScryFallCard[]> {
     });
 }
 
-export const fullSeach = promiseDebounce(_fullSeach, 600);
+export const fullSearch = promiseDebounce(_fullSeach, 600);
 
 export function namesFromCards(cards: ScryFallCard[]): string[] {
   return cards.map(({ name }) => name);

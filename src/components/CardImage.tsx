@@ -6,7 +6,7 @@ export function CardImage({
   onLoad,
 }: {
   card: ScryFallCard
-  onLoad: () => void
+  onLoad?: () => void
 }) {
   const [loading, setLoading] = useState<boolean>();
   console.log('IMAGE LOADING', loading);

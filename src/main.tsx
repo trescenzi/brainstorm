@@ -1,9 +1,11 @@
 import { render } from 'preact'
-import {useEffect, useRef} from 'preact/hooks';
+import {useEffect, useRef, useState} from 'preact/hooks';
 import {wasmSupported} from './utils/support';
+import {exactName, ScryFallCard} from './utils/scryfall';
 import initWasm from '../pkg/wasm_typeahead.js';
 import type {Typeahead} from '../pkg/wasm_typeahead';
 import {Typeahead as PreactTypeahead} from './components/Typeahead';
+import {CardImage} from './components/CardImage';
 import './index.css'
 
 type Init = {
@@ -37,6 +39,7 @@ async function init() : Promise<Init> {
 }
 
 function App() {
+  const [selectedCard, setSelectedCard] = useState<ScryFallCard | null>(null);
   const typeahead = useRef<Typeahead>();
   useEffect(() => {
     async function run() {
@@ -53,17 +56,20 @@ function App() {
     run();
   }, []);
 
-  return <PreactTypeahead
-    search={(name) => {
-      if (typeahead.current) {
-        return typeahead.current.search(name).split('|');
-      }
-      return [];
-    }}
-    onSelect={(name) => {
-      console.log('SELECTED', name);
-    }}
-  />
+  return <div>
+    <PreactTypeahead
+      search={(name) => {
+        if (typeahead.current) {
+          return typeahead.current.search(name).split('|');
+        }
+        return [];
+      }}
+      onSelect={async (name) => {
+        setSelectedCard(await exactName(name));
+      }}
+    />
+    {selectedCard && <CardImage card={selectedCard} />}
+  </div>
 }
 
 render(<App />, document.getElementById('app')!)
