@@ -1,0 +1,16 @@
+:root {
+  --color-mtg-blue: #ABE1FA;
+  --color-mtg-red: #F9AC90;
+  --color-mtg-white: #FFFBD6;
+  --color-mtg-green: #9CD4B0;
+  --color-mtg-black: #CCC3C0;
+  --color-black: #333333;
+  --color-white: #FAFAFA;
+
+
+  --color-text: var(--color-black);
+  --color-background: var(--color-white);
+  --color-typeahead-bottom-border: var(--color-mtg-blue);
+  --color-typeahead-list-bottom-border: var(--color-mtg-green);
+  --color-typeahead-list-background: var(--color-white);
+}
