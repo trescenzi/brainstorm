@@ -8,8 +8,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "accessible-autocomplete": "^2.0.4",
-    "downshift": "^6.1.7",
     "fastest-levenshtein": "^1.0.12",
     "lodash": "^4.17.21",
     "preact": "^10.5.15"
