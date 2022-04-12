@@ -1,0 +1,103 @@
+:root {
+  --color-mtg-blue: #ABE1FA;
+  --color-mtg-red: #F9AC90;
+  --color-mtg-white: #FFFBD6;
+  --color-mtg-green: #9CD4B0;
+  --color-mtg-black: #CCC3C0;
+  --color-black: #333333;
+  --color-white: #FAFAFA;
+
+
+  --color-text: var(--color-black);
+  --color-background: var(--color-white);
+  --color-typeahead-bottom-border: var(--color-mtg-blue);
+  --color-typeahead-list-bottom-border: var(--color-mtg-green);
+  --color-typeahead-list-background: var(--color-white);
+  --color-text-divider: var(--color-mtg-black);
+
+  --space-1: 8px;
+  --space-2: calc(var(--space-1) * 2);
+  --space-3: calc(var(--space-1) * 3);
+  --space-4: calc(var(--space-1) * 4);
+  --space-5: calc(var(--space-1) * 5);
+}
+
+.dark-mode {
+  --color-text: var(--color-white);
+  --color-background: var(--color-black);
+  --color-text-divider: var(--color-mtg-white);
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: var(--color-background);
+  overflow: hidden;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  font-family: 'Space Mono', monospace;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.main {
+  display: grid;
+  grid-gap: var(--space-1);
+  grid-template-areas: "typeahead typeahead"
+                       "img text"
+                       "prices text"
+                       "legality text"
+                       "footer   text";
+  grid-template-columns: 200px auto;
+}
+
+@media(min-width: 414px) {
+  .main {
+    margin: var(--space-2);
+    grid-gap: var(--space-2);
+  }
+}
+
+@media(min-width: 750px) {
+  .main {
+    grid-template-columns: 360px auto;
+  }
+}
+
+@media(min-width: 1000px) {
+  .main {
+    margin: 2.5%;
+    grid-template-columns: 500px 355px auto;
+    grid-template-areas: "typeahead typeahead blank"
+                         "img text prices"
+                         "img text legality"
+                         "image text footer";
+  }
+}

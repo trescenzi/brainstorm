@@ -30,6 +30,7 @@ function compareMatchs(oldMatch: Match, newMatch: Match): number {
   }
 }
 
+/*
 window.times = {};
 window.averageTimes = function (name) {
   return times[name].reduce((acc, t) => acc + t, 0) / times[name].length;
@@ -48,6 +49,7 @@ function time(fn, name) {
   //console.log(totalTime, name);
   return r;
 }
+*/
 
 export function search(
   str: string,
@@ -55,9 +57,7 @@ export function search(
 ): Array<Match> {
   str = preprocess(str);
   let numIncludes = 0;
-  let weighted = time(
-    () =>
-      searchSpace.reduce((matches: Array<Match>, n: SearchObject) => {
+  let weighted = searchSpace.reduce((matches: Array<Match>, n: SearchObject) => {
         const startsWith = n.processed.startsWith(str);
         const includes = startsWith || n.processed.includes(str);
         if (includes) numIncludes++;
@@ -71,31 +71,26 @@ export function search(
           includes,
         });
         return matches;
-      }, []),
-    "measure-default"
-  );
+      }, [])
   if (numIncludes > 0) {
     weighted = weighted.filter((w) => w.includes);
   }
-  const sorted = time(() => weighted.sort(compareMatchs), "sort");
+  const sorted = weighted.sort(compareMatchs);
   return sorted.slice(0, 10);
 }
 
+/*
 export function searchSpread(
   str: string,
   searchSpace: Array<SearchObject>
 ): Array<Match> {
   str = preprocess(str);
-  const weighted = time(
-    () =>
-      searchSpace.map((n: SearchObject) => ({
+  const weighted = searchSpace.map((n: SearchObject) => ({
         ...n,
         distance: distance(str, n.processed),
         includes: n.processed.includes(str),
-      })),
-    "measure-spread"
-  );
-  const sorted = time(() => weighted.sort(compareMatchs), "sort");
+      }))
+  const sorted = weighted.sort(compareMatchs);
   return sorted.slice(0, 10);
 }
 
@@ -116,6 +111,7 @@ export function searchIndex(
   const sorted = time(() => weighted.sort(compareMatchs), "sort");
   return sorted.slice(0, 10).map((n) => searchSpace[n.index]);
 }
+*/
 
 export function preprocess(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9 ]/g, "");
@@ -130,5 +126,5 @@ export function preProcessStrings(strings: Array<string>): Array<SearchObject> {
       processed,
     });
     return strings;
-  }, []);
+  }, [] as Array<SearchObject>);
 }

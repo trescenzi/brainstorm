@@ -1,28 +1,23 @@
 {
-  "name": "fast-mtg-typeahead",
-  "version": "1.0.0",
-  "description": "",
-  "main": "typeahead.js",
+  "name": "brainstorm",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "start": "node processCardNames.js && snowpack dev",
-    "wasm-pack": "wasm-pack build --target web && rm pkg/wasm_typeahead_bg.wasm.d.ts",
-    "wasm-local": "npm run wasm-pack && snowpack build && cd build && python -m SimpleHTTPServer 8000",
-    "build": "node processCardNames.js && snowpack build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write src"
-  },
-  "author": "",
-  "license": "MIT",
-  "devDependencies": {
-    "@snowpack/plugin-svelte": "3.7.0",
-    "lodash": "^4.17.21",
-    "node-fetch": "^2.6.1",
-    "prettier": "^2.2.1",
-    "prettier-plugin-svelte": "^2.1.6",
-    "snowpack": "^3.8.3"
+    "dev": "vite",
+    "build": "node processCardNames.js && tsc && vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "fastest-levenshtein": "^1.0.12",
-    "svelte": "^3.41.0"
+    "preact": "^10.5.15"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.1.5",
+    "node-fetch": "^3.2.3",
+    "ts-css-modules-vite-plugin": "^1.0.18",
+    "typescript": "^4.5.4",
+    "typescript-plugin-css-modules": "^3.4.0",
+    "vite": "^2.9.0"
   }
 }

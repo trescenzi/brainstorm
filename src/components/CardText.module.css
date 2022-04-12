@@ -1,0 +1,29 @@
+.cardText {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  color: var(--color-text);
+  grid-area: text;
+}
+
+.nameLine {
+  display: flex;
+  justify-content: space-between;
+}
+
+.oracleText {
+  display: grid;
+  grid-row-gap: 4px;
+}
+
+.divider {
+  max-height: 1px;
+  border-bottom: 1px solid var(--color-text-divider);
+}
+
+@media(min-width: 450px) {
+  .cardText {
+    font-size: 16px;
+  }
+}

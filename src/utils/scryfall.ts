@@ -22,22 +22,25 @@ type CardImages = {
   art_crop?: string;
   border_crop?: string;
 };
+
+type CardLegality = 'not_legal' | 'banned' | 'legal' | 'restricted';
+
 type CardLegalities = {
-  standard: string;
-  future: string;
-  historic: string;
-  gladiator: string;
-  pioneer: string;
-  modern: string;
-  legacy: string;
-  pauper: string;
-  vintage: string;
-  penny: string;
-  commander: string;
-  brawl: string;
-  duel: string;
-  oldschool: string;
-  premodern: string;
+  standard: CardLegality;
+  future: CardLegality;
+  historic: CardLegality;
+  gladiator: CardLegality;
+  pioneer: CardLegality;
+  modern: CardLegality;
+  legacy: CardLegality;
+  pauper: CardLegality;
+  vintage: CardLegality;
+  penny: CardLegality;
+  commander: CardLegality;
+  brawl: CardLegality;
+  duel: CardLegality;
+  oldschool: CardLegality;
+  premodern: CardLegality;
 };
 type CardPrices = {
   usd: string;
@@ -176,7 +179,7 @@ function promiseDebounce(func: Function, wait: number): Function {
       reject = null;
     }
     clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
+    timeout = setTimeout(later, wait) as unknown as number;
     return promise;
   };
 }
@@ -225,7 +228,7 @@ async function _fullSeach(query: string): Promise<ScryFallCard[]> {
     });
 }
 
-export const fullSeach = promiseDebounce(_fullSeach, 600);
+export const fullSearch = promiseDebounce(_fullSeach, 600);
 
 export function namesFromCards(cards: ScryFallCard[]): string[] {
   return cards.map(({ name }) => name);

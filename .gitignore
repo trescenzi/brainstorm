@@ -8,3 +8,5 @@ allnames.json
 **/*.rs.bk
 bin/
 wasm-pack.log
+
+dist
