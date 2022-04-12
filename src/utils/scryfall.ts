@@ -23,7 +23,7 @@ type CardImages = {
   border_crop?: string;
 };
 
-type CardLegality = 'not_legal' | 'banned' | 'legal' | 'restricted';
+export type CardLegality = 'not_legal' | 'banned' | 'legal' | 'restricted';
 
 type CardLegalities = {
   standard: CardLegality;

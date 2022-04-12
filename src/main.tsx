@@ -5,6 +5,7 @@ import {init} from './utils/init';
 import {CardImage} from './components/CardImage';
 import {CardText} from './components/CardText';
 import {CardPrices} from './components/CardPrices';
+import {CardLegalities} from './components/CardLegality';
 import {Typeahead as PreactTypeahead} from './components/Typeahead';
 import type {Typeahead} from '../pkg/wasm_typeahead';
 import './index.css'
@@ -42,6 +43,7 @@ function App() {
     {selectedCard && <CardImage card={selectedCard} />}
     {selectedCard && <CardText card={selectedCard} />}
     {selectedCard && <CardPrices card={selectedCard} />}
+    {selectedCard && <CardLegalities card={selectedCard} />}
   </div>
 }
 
