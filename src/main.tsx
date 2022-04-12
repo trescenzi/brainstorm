@@ -1,40 +1,12 @@
 import { render } from 'preact'
 import {useEffect, useRef, useState} from 'preact/hooks';
-import {wasmSupported} from './utils/support';
 import {exactName, ScryFallCard} from './utils/scryfall';
-import initWasm from '../pkg/wasm_typeahead.js';
-import type {Typeahead} from '../pkg/wasm_typeahead';
-import {Typeahead as PreactTypeahead} from './components/Typeahead';
+import {init} from './utils/init';
 import {CardImage} from './components/CardImage';
+import {CardText} from './components/CardText';
+import {Typeahead as PreactTypeahead} from './components/Typeahead';
+import type {Typeahead} from '../pkg/wasm_typeahead';
 import './index.css'
-
-type Init = {
-  Typeahead: Typeahead
-} | {
-  processedCardNames: any;
-} | null;
-
-async function init() : Promise<Init> {
-  const [names, _] = await Promise.all([
-    fetch('/allnames.json').then(n => n.json()),
-    wasmSupported ? initWasm() : Promise.resolve()
-  ]);
-
-  if (wasmSupported) {
-    console.log('Using WASM search');
-    const wasm = await import('../pkg/wasm_typeahead.js');
-    const Typeahead = wasm.Typeahead;
-    return {
-      Typeahead: Typeahead.new(names.join('|'))
-    };
-  } else {
-    console.log('WASM not supported falling back to js search');
-    const {preProcessStrings} = await import('./utils/search');
-    return {
-      processedCardNames: preProcessStrings(names)
-    }
-  }
-}
 
 function App() {
   const [selectedCard, setSelectedCard] = useState<ScryFallCard | null>(null);
@@ -54,7 +26,7 @@ function App() {
     run();
   }, []);
 
-  return <div>
+  return <div class="main">
     <PreactTypeahead
       search={(name) => {
         if (typeahead.current) {
@@ -67,6 +39,7 @@ function App() {
       }}
     />
     {selectedCard && <CardImage card={selectedCard} />}
+    {selectedCard && <CardText card={selectedCard} />}
   </div>
 }
 

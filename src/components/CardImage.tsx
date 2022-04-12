@@ -1,5 +1,6 @@
 import {useState} from 'preact/hooks';
 import { CardImageSizes, getImageLink, ScryFallCard } from "../utils/scryfall";
+import classes from './CardImage.module.css';
 
 export function CardImage({
   card,
@@ -12,6 +13,7 @@ export function CardImage({
   console.log('IMAGE LOADING', loading);
 
   return <img
+    class={classes.cardImage}
     src={getImageLink(card, CardImageSizes.NORMAL)}
     alt={`name:${card.name} type:${card.type_line} text:${card.oracle_text}`}
     onLoad={() => {

@@ -1,5 +1,6 @@
 .typeaheadContainer {
   position: relative;
+  grid-area: typeahead;
 }
 .typeahead {
   appearance: none;

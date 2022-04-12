@@ -22,22 +22,25 @@ type CardImages = {
   art_crop?: string;
   border_crop?: string;
 };
+
+type CardLegality = 'not_legal' | 'banned' | 'legal' | 'restricted';
+
 type CardLegalities = {
-  standard: string;
-  future: string;
-  historic: string;
-  gladiator: string;
-  pioneer: string;
-  modern: string;
-  legacy: string;
-  pauper: string;
-  vintage: string;
-  penny: string;
-  commander: string;
-  brawl: string;
-  duel: string;
-  oldschool: string;
-  premodern: string;
+  standard: CardLegality;
+  future: CardLegality;
+  historic: CardLegality;
+  gladiator: CardLegality;
+  pioneer: CardLegality;
+  modern: CardLegality;
+  legacy: CardLegality;
+  pauper: CardLegality;
+  vintage: CardLegality;
+  penny: CardLegality;
+  commander: CardLegality;
+  brawl: CardLegality;
+  duel: CardLegality;
+  oldschool: CardLegality;
+  premodern: CardLegality;
 };
 type CardPrices = {
   usd: string;
