@@ -83,3 +83,20 @@ img {
     grid-gap: var(--space-2);
   }
 }
+
+@media(min-width: 750px) {
+  .main {
+    grid-template-columns: 360px auto;
+  }
+}
+
+@media(min-width: 1000px) {
+  .main {
+    margin: 2.5%;
+    grid-template-columns: 500px 355px auto;
+    grid-template-areas: "typeahead typeahead blank"
+                         "img text prices"
+                         "img text legality"
+                         "image text footer";
+  }
+}
