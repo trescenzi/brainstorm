@@ -24,10 +24,13 @@ export function Typeahead({
    class={classes.typeaheadContainer}
    onFocus={() => setIsOpen(true)}
   >
+    <label id="input-label" htmlFor='autocomplete'>Card Name:</label>
     <input
       class={classes.typeahead}
       value={inputVal}
+      id="autocomplete"
       aria-autocomplete="list"
+      aria-labeledby="input-label"
       aria-expanded={isOpen}
       onInput={({target}) => {
         const v = (target as any).value
