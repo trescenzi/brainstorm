@@ -23,7 +23,6 @@ export function Typeahead({
   return <div 
    class={classes.typeaheadContainer}
    onFocus={() => setIsOpen(true)}
-   onfocusout={() => setIsOpen(false)}
   >
     <input
       class={classes.typeahead}
@@ -58,6 +57,7 @@ export function Typeahead({
           key={name}
           aria-selected={selectedCardName === name}
           onClick={() => {
+            setIsOpen(false);
             onSelect(name);
           }}
           onMouseOver={() => {
