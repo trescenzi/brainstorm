@@ -6,13 +6,27 @@
   display: flex;
   justify-content: space-between;
   margin: var(--space-1);
+  grid-area: prices;
 }
 .prices a {
   color: var(--color-text);
 }
 
 @media(min-width: 1000px) {
+  .prices {
+    flex-direction: column;
+    gap: var(--space-3);
+    margin-left: 100px;
+    max-width: 200px;
+  }
+
   .store {
     display: inline-block;
+  }
+
+  .price {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
   }
 }
