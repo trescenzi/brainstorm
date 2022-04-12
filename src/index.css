@@ -22,9 +22,16 @@
   --space-5: calc(var(--space-1) * 5);
 }
 
+.dark-mode {
+  --color-text: var(--color-white);
+  --color-background: var(--color-black);
+  --color-text-divider: var(--color-mtg-white);
+}
+
 html {
   box-sizing: border-box;
   font-size: 16px;
+  background-color: var(--color-background);
 }
 
 *,
