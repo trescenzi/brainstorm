@@ -1,0 +1,18 @@
+.store {
+  display: none;
+}
+
+.prices {
+  display: flex;
+  justify-content: space-between;
+  margin: var(--space-1);
+}
+.prices a {
+  color: var(--color-text);
+}
+
+@media(min-width: 1000px) {
+  .store {
+    display: inline-block;
+  }
+}
