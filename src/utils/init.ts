@@ -19,13 +19,13 @@ export async function init() : Promise<Init> {
     const wasm = await import('../../pkg/wasm_typeahead.js');
     const Typeahead = wasm.Typeahead;
     return {
-      Typeahead: Typeahead.new(names.join('|'))
+      Typeahead: Typeahead.new(names)
     };
   } else {
     console.log('WASM not supported falling back to js search');
     const {preProcessStrings} = await import('./search');
     return {
-      processedCardNames: preProcessStrings(names)
+      processedCardNames: preProcessStrings(names.split('|'))
     }
   }
 }
