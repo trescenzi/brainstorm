@@ -7,7 +7,7 @@ async function main() {
   console.log(`Got ${Object.keys(allPrintings.data)} sets`);
   const allNames = [...new Set(Object.values(allPrintings.data).reduce((all, {cards}) => [...all, ...cards.map(({name}) => name)], []))];
   console.log(`Found ${allNames.length} names`);
-  fs.writeFileSync('./public/allnames.json', JSON.stringify(allNames));
+  fs.writeFileSync('./build/allnames.json', JSON.stringify(allNames.join('|')));
 }
 
 main();
