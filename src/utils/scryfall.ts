@@ -150,7 +150,7 @@ export type ScryFallCard = {
   prices: CardPrices;
   related_uris: RelatedUris;
   purchase_uris: PurchaseUris;
-  card_faces?: [CardFace];
+  card_faces?: [CardFace, CardFace];
 };
 
 function promiseDebounce(func: Function, wait: number): Function {
@@ -197,15 +197,24 @@ export async function exactName(name: string): Promise<ScryFallCard> {
 
 export function getImageLink(
   card: ScryFallCard,
-  size: CardImageSizes
+  size: CardImageSizes,
+  front: boolean = true,
 ): string | undefined {
   if (card.image_uris) {
     return card.image_uris[size];
   }
 
   if (card.card_faces) {
-    return card.card_faces[0].image_uris[size];
+    return card.card_faces[front ? 0 : 1].image_uris[size];
   }
+}
+
+export function getCardText( card: ScryFallCard) {
+  if (card.card_faces) {
+    return card.card_faces[0].oracle_text + '\n' + card.card_faces[1].oracle_text;
+  }
+
+  return card.oracle_text;
 }
 
 export function isScryfallSearch(query: string): boolean {

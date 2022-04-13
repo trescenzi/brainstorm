@@ -28,6 +28,7 @@ function App() {
     run();
   }, []);
 
+  console.log(selectedCard);
   return <div class="main">
     <PreactTypeahead
       search={(name) => {

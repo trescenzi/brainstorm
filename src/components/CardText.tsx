@@ -1,4 +1,4 @@
-import { ScryFallCard } from "../utils/scryfall";
+import { ScryFallCard, getCardText } from "../utils/scryfall";
 import classes from './CardText.module.css';
 
 export function CardText({card}: {card: ScryFallCard}) {
@@ -11,7 +11,7 @@ export function CardText({card}: {card: ScryFallCard}) {
     <div><p name="type_line">{card.type_line}</p></div>
     <div class={classes.divider} />
     <div name="oracle_text" class={classes.oracleText}>
-      {card.oracle_text.split('\n').map(line => <p>{line}</p>)}
+      {getCardText(card).split('\n').map(line => <p>{line}</p>)}
     </div>
   </div>
 }
