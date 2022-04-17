@@ -55,6 +55,17 @@ export function Typeahead({
       }}
     />
     <label id="input-label" htmlFor='autocomplete'>Card Name:</label>
+    <button 
+      class={classes.clear}
+      type="button"
+      name="clear"
+      onClick={() => {
+        setIsOpen(false);
+        setInputVal(' ');
+      }}
+    >
+      X
+    </button>
     {isOpen &&
       <ul class={classes.typeaheadList}>
         {cardNames.map(name => <li
