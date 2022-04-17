@@ -24,14 +24,14 @@ export function Typeahead({
    class={classes.typeaheadContainer}
    onFocus={() => setIsOpen(true)}
   >
-    <label id="input-label" htmlFor='autocomplete'>Card Name:</label>
     <input
       class={classes.typeahead}
-      value={inputVal}
+      value={inputVal.length > 0 ? inputVal : undefined}
       id="autocomplete"
       aria-autocomplete="list"
       aria-labeledby="input-label"
       aria-expanded={isOpen}
+      placeholder=""
       onInput={({target}) => {
         const v = (target as any).value
         setInputVal(v);
@@ -54,6 +54,7 @@ export function Typeahead({
         }
       }}
     />
+    <label id="input-label" htmlFor='autocomplete'>Card Name:</label>
     {isOpen &&
       <ul class={classes.typeaheadList}>
         {cardNames.map(name => <li

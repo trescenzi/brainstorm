@@ -1,8 +1,24 @@
 .typeaheadContainer {
   position: relative;
   grid-area: typeahead;
+  display: grid;
+}
+.typeaheadContainer label {
+  grid-column: 1/1;
+  grid-row: 1/1;
+  transition: all .2s ease;
+  transform-origin: 0 0;
+  font-size: 1.75rem;
+  align-self: end;
+}
+.typeaheadContainer:focus-within label,
+.typeahead:not(:placeholder-shown) + label {
+  transform: scale(.42);
+  align-self: start;
 }
 .typeahead {
+  grid-column: 1/1;
+  grid-row: 1/1;
   appearance: none;
   border: none;
   outline: none;
@@ -10,7 +26,9 @@
   width: 100%;
   color: var(--color-text);
   border-bottom: 2px solid var(--color-typeahead-bottom-border);
-  font-size: 2rem;
+  font-size: 1.75rem;
+  align-self: end;
+  margin-top: 1rem;
 }
 .typeaheadList {
   padding: 0;
@@ -23,6 +41,7 @@
   justify-content: center;
   align-content: center;
   flex-direction: column;
+  top: 100%;
 }
 .typeaheadList li {
   appearance: none;
