@@ -29,6 +29,7 @@
   font-size: 1.75rem;
   align-self: end;
   margin-top: 1rem;
+  padding: 0;
 }
 .clear {
   grid-column: 2/3;
