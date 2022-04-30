@@ -31,7 +31,7 @@ export function Typeahead({
       aria-autocomplete="list"
       aria-labeledby="input-label"
       aria-expanded={isOpen}
-      placeholder=""
+      placeholder=" "
       onInput={({target}) => {
         const v = (target as any).value
         setInputVal(v);
