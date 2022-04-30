@@ -16,7 +16,6 @@
   .prices {
     flex-direction: column;
     gap: var(--space-3);
-    margin-left: 100px;
     max-width: 200px;
     justify-content: flex-start;
   }
@@ -29,5 +28,11 @@
     display: flex;
     justify-content: space-between;
     text-decoration: none;
+  }
+}
+
+@media(min-width: 1335px) {
+  .prices {
+    margin-left: 100px;
   }
 }
