@@ -26,7 +26,7 @@ export function Typeahead({
   >
     <input
       class={classes.typeahead}
-      value={inputVal.length > 0 ? inputVal : undefined}
+      value={inputVal}
       id="autocomplete"
       aria-autocomplete="list"
       aria-labeledby="input-label"
@@ -61,7 +61,7 @@ export function Typeahead({
       name="clear"
       onClick={() => {
         setIsOpen(false);
-        setInputVal(' ');
+        setInputVal('');
       }}
     >
       X
