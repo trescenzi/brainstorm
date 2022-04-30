@@ -8,7 +8,7 @@ function CardLegality({format, legality}: {format: string, legality: TCardLegali
 export function CardLegalities({card}: {card: ScryFallCard}) {
   return <div class={classes.legalities}>
     <div class={classes.legalitiesHeader}>
-      <h2><i>{card.name}</i> legality across formats:</h2>
+      <h2><b>{card.name}</b> legality across formats:</h2>
     </div>
     <CardLegality format="commander" legality={card.legalities.commander} />
     <CardLegality format="modern" legality={card.legalities.modern} />
