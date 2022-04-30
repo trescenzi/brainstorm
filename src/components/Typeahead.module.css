@@ -32,6 +32,7 @@
   padding: 0;
 }
 .clear {
+  font-size: 1rem;
   grid-column: 2/3;
   grid-row: 1/1;
   border: none;
@@ -42,6 +43,7 @@
   height: 2em;
   width: 2em;
   color: var(--color-text);
+  margin-right: .25em;
 }
 .clear:active {
   background-color: var(--color-typeahead-list-bottom-border);
@@ -74,5 +76,11 @@
   .clear:hover {
     background-color: var(--color-typeahead-list-bottom-border);
     cursor: pointer;
+  }
+}
+
+@media(min-width: 764px) {
+  .clear {
+    font-size: 1.25rem;
   }
 }
