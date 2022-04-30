@@ -13,5 +13,7 @@ export function CardLegalities({card}: {card: ScryFallCard}) {
     <CardLegality format="vintage" legality={card.legalities.vintage} />
     <CardLegality format="pioneer" legality={card.legalities.pioneer} />
     <CardLegality format="standard" legality={card.legalities.standard} />
+    <CardLegality format="explorer" legality={card.legalities.standard} />
+    <CardLegality format="historic" legality={card.legalities.standard} />
   </div>
 }

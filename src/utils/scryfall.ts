@@ -41,6 +41,7 @@ type CardLegalities = {
   duel: CardLegality;
   oldschool: CardLegality;
   premodern: CardLegality;
+  explorer: CardLegality;
 };
 type CardPrices = {
   usd: string;
