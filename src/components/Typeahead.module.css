@@ -30,6 +30,7 @@
   align-self: end;
   margin-top: 1rem;
   padding: 0;
+  letter-spacing: 0.02rem;
 }
 .clear {
   font-size: 1rem;
