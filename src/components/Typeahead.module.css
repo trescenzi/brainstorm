@@ -9,7 +9,7 @@
   transition: all .2s ease;
   transform-origin: 0 0;
   font-size: 1.75rem;
-  align-self: end;
+  align-self: center;
 }
 .typeahead:focus-within + label,
 .typeahead:not(:placeholder-shown) + label {
