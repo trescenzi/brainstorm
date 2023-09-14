@@ -1,0 +1,17 @@
+on:
+  schedule:
+    # every day at 1am
+    - cron:  '0 1 * * *'
+  push:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: trigger deploy
+        run:  curl https://api.vercel.com/v1/integrations/deploy/prj_ErhiqzKIso26FcY9JJz4lkvRhBE9/ps19LuJACF
