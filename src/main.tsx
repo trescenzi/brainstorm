@@ -8,8 +8,10 @@ import {CardPrices} from './components/CardPrices';
 import {CardLegalities} from './components/CardLegality';
 import {Typeahead as PreactTypeahead} from './components/Typeahead';
 import type {Typeahead} from '../pkg/wasm_typeahead';
+import { inject } from '@vercel/analytics';
 import './index.css'
 
+inject();
 function App() {
   const [selectedCard, setSelectedCard] = useState<ScryFallCard | null>(null);
   const typeahead = useRef<Typeahead>();
