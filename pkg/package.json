@@ -7,9 +7,13 @@
   "files": [
     "wasm_typeahead_bg.wasm",
     "wasm_typeahead.js",
+    "wasm_typeahead_bg.js",
     "wasm_typeahead.d.ts"
   ],
   "module": "wasm_typeahead.js",
   "types": "wasm_typeahead.d.ts",
-  "sideEffects": false
+  "sideEffects": [
+    "./wasm_typeahead.js",
+    "./snippets/*"
+  ]
 }
