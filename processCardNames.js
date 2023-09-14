@@ -1,5 +1,4 @@
 import fs from 'fs';
-import fetch from 'node-fetch';
 
 async function main() {
   console.log('Grabbing card names from mtgjson');
