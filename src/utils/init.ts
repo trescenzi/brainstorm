@@ -1,4 +1,3 @@
-import initWasm from '../../pkg/wasm_typeahead.js';
 import {wasmSupported} from './support';
 import type {Typeahead} from '../../pkg/wasm_typeahead';
 
@@ -11,7 +10,7 @@ type Init = {
 export async function init() : Promise<Init> {
   const [names, _] = await Promise.all([
     fetch('/allnames.json').then(n => n.json()),
-    wasmSupported ? initWasm() : Promise.resolve()
+    Promise.resolve()
   ]);
 
   if (wasmSupported) {
